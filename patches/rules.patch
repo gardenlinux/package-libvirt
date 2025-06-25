@@ -1,0 +1,13 @@
+diff --git a/debian/rules b/debian/rules
+index 868b31876..40e2f1d1f 100755
+--- a/debian/rules
++++ b/debian/rules
+@@ -147,7 +147,7 @@ DEB_CONFIGURE_EXTRA_ARGS := \
+     -Ddriver_remote=enabled \
+     -Dremote_default_mode=legacy \
+     -Ddriver_test=enabled \
+-    -Ddriver_ch=disabled \
++    -Ddriver_ch=enabled \
+     -Ddriver_bhyve=disabled \
+     -Ddriver_hyperv=disabled \
+     -Dopenwsman=disabled \

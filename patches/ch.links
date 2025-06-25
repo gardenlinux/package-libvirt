@@ -1,0 +1,4 @@
+--- /dev/null
++++ b/debian/libvirt-daemon-driver-ch-gl.links
+@@ -0,0 +1 @@
++usr/share/doc/libvirt-common usr/share/doc/libvirt-daemon-driver-ch

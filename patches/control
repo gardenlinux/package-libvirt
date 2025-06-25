@@ -1,0 +1,40 @@
+diff --git a/debian/control b/debian/control
+index 3a583c16c..e39f9efd4 100644
+--- a/debian/control
++++ b/debian/control
+@@ -339,6 +339,35 @@ Description: virtualization daemon - LXC connection driver
+  This package contains the LXC connection driver.
+ Homepage: https://libvirt.org/drvlxc.html
+ 
++Package: libvirt-daemon-driver-ch-gl
++Section: admin
++Architecture: linux-any
++Multi-Arch: no
++Depends:
++ libvirt-common (= ${binary:Version}),
++ libvirt-daemon (= ${binary:Version}),
++ libvirt-daemon-driver-network (= ${binary:Version}),
++ libvirt0 (= ${binary:Version}),
++ logrotate,
++ systemd-container | sysvinit-core,
++ ${misc:Depends},
++ ${shlibs:Depends},
++Breaks:
++ libvirt-daemon (<< 6.9.0-2~),
++ libvirt-daemon-system (<< 10.6.0-2~),
++Replaces:
++ libvirt-daemon (<< 6.9.0-2~),
++ libvirt-daemon-system (<< 10.6.0-2~),
++Description: virtualization daemon - Cloud Hypervisor connection driver
++ libvirt exposes a long-term stable API that can be used to interact with
++ various hypervisors. Its architecture is highly modular, with most features
++ implemented as optional drivers. It can be used from C as well as several
++ other programming languages, and it forms the basis of virtualization
++ solutions tailored for a range of use cases.
++ .
++ This package contains the CH connection driver.
++Homepage: https://libvirt.org/drvch.html
++
+ Package: libvirt-daemon-driver-vbox
+ Section: admin
+ Architecture: amd64 i386

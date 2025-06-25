@@ -1,0 +1,12 @@
+--- /dev/null
++++ b/debian/libvirt-daemon-driver-ch-gl.install.in
+@@ -0,0 +1,9 @@
++etc/libvirt/virtchd.conf
++usr/lib/systemd/system/virtchd-admin.socket
++usr/lib/systemd/system/virtchd-ro.socket
++usr/lib/systemd/system/virtchd.service
++usr/lib/systemd/system/virtchd.socket
++usr/lib/${DEB_HOST_MULTIARCH}/libvirt/connection-driver/libvirt_driver_ch.so
++usr/sbin/virtchd
++usr/share/augeas/lenses/tests/test_virtchd.aug
++usr/share/augeas/lenses/virtchd.aug

@@ -1,0 +1,4 @@
+--- /dev/null
++++ b/debian/libvirt-daemon-driver-ch-gl.dirs
+@@ -0,0 +1 @@
++var/log/libvirt/ch

@@ -1,0 +1,36 @@
+diff --git a/debian/control.in b/debian/control.in
+index 737a65a8f..7e5dbb225 100644
+--- a/debian/control.in
++++ b/debian/control.in
+@@ -307,6 +307,31 @@ Description: virtualization daemon - LXC connection driver
+  This package contains the LXC connection driver.
+ Homepage: https://libvirt.org/drvlxc.html
+ 
++Package: libvirt-daemon-driver-ch-gl
++Section: admin
++Architecture: linux-any
++Multi-Arch: no
++Depends:
++ libvirt-common (= ${binary:Version}),
++ libvirt-daemon (= ${binary:Version}),
++ libvirt-daemon-driver-network (= ${binary:Version}),
++ libvirt0 (= ${binary:Version}),
++ logrotate,
++ systemd-container | sysvinit-core,
++ ${misc:Depends},
++ ${shlibs:Depends},
++Breaks:
++ libvirt-daemon (<< 6.9.0-2~),
++ libvirt-daemon-system (<< 10.6.0-2~),
++Replaces:
++ libvirt-daemon (<< 6.9.0-2~),
++ libvirt-daemon-system (<< 10.6.0-2~),
++Description: virtualization daemon - Cloud Hypervisor connection driver
++ @COMMON_DESCRIPTION@
++ .
++ This package contains the CH connection driver.
++Homepage: https://libvirt.org/drvch.html
++
+ Package: libvirt-daemon-driver-vbox
+ Section: admin
+ Architecture: ${ARCHES_VBOX}

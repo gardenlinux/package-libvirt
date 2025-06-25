@@ -1,0 +1,15 @@
+git_src --branch gardenlinux https://github.com/cyberus-technology/libvirt.git 
+
+# debian specific things
+crd=$(mktemp -d)      
+git clone https://salsa.debian.org/libvirt-team/libvirt.git $crd
+pushd $crd
+git checkout debian/11.3.0-2
+cp -r debian "$dir/src/"
+popd
+rm -rf "$crd"
+
+apply_patches
+
+version="11.3.0-3"
+message="Update to 11.3.0-3"
