@@ -13,3 +13,4 @@ apply_patches
 
 version="11.3.0-6"
 message="Update to 11.3.0-6"
+version_suffix=gl0
