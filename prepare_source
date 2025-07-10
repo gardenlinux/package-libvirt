@@ -1,4 +1,4 @@
-git_src --branch gardenlinux https://github.com/notandy/libvirt.git 
+git_src --branch gardenlinux https://github.com/cyberus-technology/libvirt.git 
 
 # debian specific things
 crd=$(mktemp -d)      
@@ -11,5 +11,5 @@ rm -rf "$crd"
 
 apply_patches
 
-version="11.3.0-15"
-message="Update to $version"
+version="11.3.0-14"
+message="Update to 11.3.0-14"
