@@ -13,3 +13,4 @@ apply_patches
 
 version="11.3.0-17"
 message="Update to $version"
+version_suffix=gl0
