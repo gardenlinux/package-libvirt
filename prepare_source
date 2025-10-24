@@ -11,5 +11,5 @@ rm -rf "$crd"
 
 apply_patches
 
-version="11.3.0-25"
+version="11.3.0-26"
 message="Update to $version"
