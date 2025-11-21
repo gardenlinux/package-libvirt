@@ -1,8 +1,0 @@
-wireshark-Drop-needless-declaration-of-proto_register_lib.patch
-wireshark-Switch-header-files-to-pragma-once.patch
-wireshark-Move-WIRESHARK_VERSION-macro-definition.patch
-wireshark-Fix-int-type-of-some-virNetMessageHeader-member.patch
-wireshark-Don-t-special-case-retval-of-get_program_data-i.patch
-wireshark-Introduce-and-use-vir_val_to_str.patch
-wireshark-Don-t-leak-column-strings.patch
-wireshark-Adapt-to-wireshark-4.6.0.patch

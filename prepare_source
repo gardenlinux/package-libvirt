@@ -10,7 +10,7 @@ popd
 rm -rf "$crd"
 
 apply_patches
-import_upstream_patches
 
 version="11.3.0-27"
+version_suffix=gl0~bp1877
 message="Update to $version"
