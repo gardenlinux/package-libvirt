@@ -1,4 +1,5 @@
-git_src --branch gardenlinux https://github.com/cyberus-technology/libvirt.git 
+#git_src --branch gardenlinux https://github.com/cyberus-technology/libvirt.git
+git_src --branch for_christian https://github.com/tpressure/libvirt.git
 
 # debian specific things
 crd=$(mktemp -d)      
