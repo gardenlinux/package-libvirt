@@ -30,5 +30,5 @@ sed -i "s/SED_MARKER_FOR_COMMIT_SHA/$SHA_AFTER_CLONE/" upstream_patches/meson.bu
 apply_patches
 import_upstream_patches
 
-version="11.3.0-30"
+version="11.3.0-31"
 message="Update to $version"
