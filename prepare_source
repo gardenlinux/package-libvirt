@@ -12,5 +12,5 @@ rm -rf "$crd"
 apply_patches
 import_upstream_patches
 
-version="11.3.0-29"
+version="11.3.0-30"
 message="Update to $version"
