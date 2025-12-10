@@ -1,13 +1,31 @@
-git_src --branch gardenlinux https://github.com/cyberus-technology/libvirt.git 
+# vim: ft=bash
+# get shasum with ls-remote and pick branch gardenlinux
+SHA_BEFORE_CLONE=$(git ls-remote https://github.com/cyberus-technology/libvirt.git refs/heads/gardenlinux | cut -f1)
+echo "Initial sha is $SHA_BEFORE_CLONE"
+while true;
+do
+  git_src --branch gardenlinux https://github.com/cyberus-technology/libvirt.git 
+  SHA_AFTER_CLONE=$(git ls-remote https://github.com/cyberus-technology/libvirt.git refs/heads/gardenlinux | cut -f1)
+
+  if [ "$SHA_BEFORE_CLONE" == "$SHA_AFTER_CLONE" ]; then
+    break
+  fi
+  SHA_BEFORE_CLONE=$(git ls-remote https://github.com/cyberus-technology/libvirt.git refs/heads/gardenlinux | cut -f1)
+  echo "Source code has changed. New sha is $SHA_BEFORE_CLONE Retrying..."
+done
+
+echo "Cloned libvirt with sha $SHA_AFTER_CLONE"
 
 # debian specific things
 crd=$(mktemp -d)      
-git clone https://salsa.debian.org/libvirt-team/libvirt.git $crd
-pushd $crd
-git checkout debian/11.3.0-2
+git clone --branch debian/11.3.0-2 --single-branch https://salsa.debian.org/libvirt-team/libvirt.git "$crd"
+pushd "$crd"
+git branch
 cp -r debian "$dir/src/"
 popd
 rm -rf "$crd"
+
+sed -i "s/SED_MARKER_FOR_COMMIT_SHA/$SHA_AFTER_CLONE/" upstream_patches/meson.build.patch
 
 apply_patches
 import_upstream_patches
