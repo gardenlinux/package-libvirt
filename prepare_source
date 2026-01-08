@@ -4,7 +4,7 @@ SHA_BEFORE_CLONE=$(git ls-remote https://github.com/cyberus-technology/libvirt.g
 echo "Initial sha is $SHA_BEFORE_CLONE"
 while true;
 do
-  git_src --branch gardenlinux-v11.3.0 https://github.com/cyberus-technology/libvirt.git 
+  git_src --branch gardenlinux https://github.com/cyberus-technology/libvirt.git 
   SHA_AFTER_CLONE=$(git ls-remote https://github.com/cyberus-technology/libvirt.git refs/heads/gardenlinux | cut -f1)
 
   if [ "$SHA_BEFORE_CLONE" == "$SHA_AFTER_CLONE" ]; then
@@ -18,7 +18,7 @@ echo "Cloned libvirt with sha $SHA_AFTER_CLONE"
 
 # debian specific things
 crd=$(mktemp -d)      
-git clone --branch debian/11.3.0-2 --single-branch https://salsa.debian.org/libvirt-team/libvirt.git "$crd"
+git clone --branch debian/11.10.0-2 --single-branch https://salsa.debian.org/libvirt-team/libvirt.git "$crd"
 pushd "$crd"
 git branch
 cp -r debian "$dir/src/"
@@ -30,5 +30,7 @@ sed -i "s/SED_MARKER_FOR_COMMIT_SHA/$SHA_AFTER_CLONE/" upstream_patches/meson.bu
 apply_patches
 import_upstream_patches
 
-version="11.3.0-32"
-message="Update to $version"
+version="11.10.0-2"  # current debian base (do not change for rebuilds)
+version_increment="0"
+version_suffix="gh${version_increment}"
+message="Update to $version $version_suffix"
