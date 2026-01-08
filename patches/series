@@ -4,3 +4,4 @@ control.in
 ch.dirs
 ch.install
 ch.links
+series.patch

@@ -1,0 +1,7 @@
+--- a/debian/patches/series
++++ b/debian/patches/series 
+@@ -1,4 +1,3 @@
+-backport/qemuProcessStartWithMemoryState-Don-t-setup-qemu-for-inco.patch
+ debian/Debianize-libvirt-guests.patch
+ debian/apparmor_profiles_local_include.patch
+ debian/Use-sensible-editor-by-default.patch
