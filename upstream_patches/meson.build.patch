@@ -5,7 +5,7 @@
    add_project_arguments(commit_define, language: 'c')
  else
 -  commit_define = '-DCOMMIT_HASH="0000000000000000000000000000000000000000"'
-+  commit_define = '-DCOMMIT_HASH="SED_MARKER_FOR_COMMIT_SHA"'
++  commit_define = '-DCOMMIT_HASH="f088305cc8ebec1f4294d8f174fbbc74c5793b65"'
    add_project_arguments(commit_define, language: 'c')
  endif
 
