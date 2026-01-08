@@ -4,7 +4,7 @@ SHA_BEFORE_CLONE=$(git ls-remote https://github.com/cyberus-technology/libvirt.g
 echo "Initial sha is $SHA_BEFORE_CLONE"
 while true;
 do
-  git_src --branch gardenlinux https://github.com/cyberus-technology/libvirt.git 
+  git_src --branch gardenlinux-v11.3.0 https://github.com/cyberus-technology/libvirt.git 
   SHA_AFTER_CLONE=$(git ls-remote https://github.com/cyberus-technology/libvirt.git refs/heads/gardenlinux | cut -f1)
 
   if [ "$SHA_BEFORE_CLONE" == "$SHA_AFTER_CLONE" ]; then
