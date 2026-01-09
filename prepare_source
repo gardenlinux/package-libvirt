@@ -34,3 +34,4 @@ version="11.10.0-2"  # current debian base (do not change for rebuilds)
 version_increment="0"
 version_suffix="gh${version_increment}"
 message="Update to $version $version_suffix"
+version_suffix=gl0
