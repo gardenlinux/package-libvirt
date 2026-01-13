@@ -1,16 +1,17 @@
 # vim: ft=bash
 # get shasum with ls-remote and pick branch gardenlinux
-SHA_BEFORE_CLONE=$(git ls-remote https://github.com/cyberus-technology/libvirt.git refs/heads/gardenlinux | cut -f1)
+BRANCH="gardenlinux-staging"
+SHA_BEFORE_CLONE=$(git ls-remote https://github.com/cyberus-technology/libvirt.git refs/heads/"$BRANCH" | cut -f1)
 echo "Initial sha is $SHA_BEFORE_CLONE"
 while true;
 do
-  git_src --branch gardenlinux https://github.com/cyberus-technology/libvirt.git 
-  SHA_AFTER_CLONE=$(git ls-remote https://github.com/cyberus-technology/libvirt.git refs/heads/gardenlinux | cut -f1)
+  git_src --branch "$BRANCH" https://github.com/cyberus-technology/libvirt.git 
+  SHA_AFTER_CLONE=$(git ls-remote https://github.com/cyberus-technology/libvirt.git refs/heads/"$BRANCH" | cut -f1)
 
   if [ "$SHA_BEFORE_CLONE" == "$SHA_AFTER_CLONE" ]; then
     break
   fi
-  SHA_BEFORE_CLONE=$(git ls-remote https://github.com/cyberus-technology/libvirt.git refs/heads/gardenlinux | cut -f1)
+  SHA_BEFORE_CLONE=$(git ls-remote https://github.com/cyberus-technology/libvirt.git refs/heads/"$BRANCH" | cut -f1)
   echo "Source code has changed. New sha is $SHA_BEFORE_CLONE Retrying..."
 done
 
@@ -32,5 +33,5 @@ import_upstream_patches
 
 version="11.10.0-2" # current debian base (do not change for rebuilds)
 version_increment="0"
-version_suffix="gl${version_increment}~bp1877"
+version_suffix="gl${version_increment}~sta1877"
 message="Update to $version $version_suffix"
