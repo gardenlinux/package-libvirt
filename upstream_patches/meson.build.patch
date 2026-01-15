@@ -1,11 +1,11 @@
---- a/meson.build       2025-12-10 13:11:38.000000000 +0000
-+++ b/meson.build       2025-12-10 13:16:54.243357645 +0000
-@@ -38,7 +38,7 @@
-   commit_define = '-DCOMMIT_HASH="@0@"'.format(commit_hash)
-   add_project_arguments(commit_define, language: 'c')
+--- a/meson.build
++++ b/meson.build
+@@ -40,7 +40,7 @@ if git and git_cmd.found() and not get_option('no_git')
+ elif get_option('commit_hash') != ''
+   commit_hash = get_option('commit_hash')
  else
 -  commit_define = '-DCOMMIT_HASH="0000000000000000000000000000000000000000"'
-+  commit_define = '-DCOMMIT_HASH="f088305cc8ebec1f4294d8f174fbbc74c5793b65"'
++  commit_define = '-DCOMMIT_HASH="SED_MARKER_FOR_COMMIT_SHA"'
    add_project_arguments(commit_define, language: 'c')
  endif
-
+ 
