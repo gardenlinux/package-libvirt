@@ -1,7 +1,7 @@
 # vim: ft=bash
 
 # commit sha
-LIBVIRT_COMMIT_SHA="78f2c53ee53a72a319c16d848dcb9d9561baa544"
+LIBVIRT_COMMIT_SHA="58478b8dd4c5576c20ad9fc05482a8e74fb649c3"
 git_src_commit "$LIBVIRT_COMMIT_SHA" https://github.com/cyberus-technology/libvirt.git
 
 # debian specific things
