@@ -1,5 +1,9 @@
 on:
   push:
+    branches:
+      - main
+      - rel-1877
+      - sta-1877
   workflow_dispatch:
   schedule:
     - cron: '0 0 * * *'
