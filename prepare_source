@@ -32,6 +32,6 @@ apply_patches
 import_upstream_patches
 
 version="11.10.0-2" # current debian base (do not change for rebuilds)
-version_increment="2"
+version_increment="3"
 version_suffix="gl${version_increment}~sta1877"
 message="Update to $version $version_suffix"
