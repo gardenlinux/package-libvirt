@@ -1,24 +1,13 @@
 # vim: ft=bash
-# get shasum with ls-remote and pick branch gardenlinux
-BRANCH="gardenlinux-staging"
-SHA_BEFORE_CLONE=$(git ls-remote https://github.com/cyberus-technology/libvirt.git refs/heads/"$BRANCH" | cut -f1)
-echo "Initial sha is $SHA_BEFORE_CLONE"
-while true;
-do
-  git_src --branch "$BRANCH" https://github.com/cyberus-technology/libvirt.git 
-  SHA_AFTER_CLONE=$(git ls-remote https://github.com/cyberus-technology/libvirt.git refs/heads/"$BRANCH" | cut -f1)
+#
+# commit sha from https://github.com/cyberus-technology/libvirt/commits/gardenlinux/
+LIBVIRT_COMMIT_SHA="8661ab92157f6f0abbdbae0b4072463f0b831e09"
+version_increment="4"
 
-  if [ "$SHA_BEFORE_CLONE" == "$SHA_AFTER_CLONE" ]; then
-    break
-  fi
-  SHA_BEFORE_CLONE=$(git ls-remote https://github.com/cyberus-technology/libvirt.git refs/heads/"$BRANCH" | cut -f1)
-  echo "Source code has changed. New sha is $SHA_BEFORE_CLONE Retrying..."
-done
-
-echo "Cloned libvirt with sha $SHA_AFTER_CLONE"
+git_src_commit "$LIBVIRT_COMMIT_SHA" https://github.com/cyberus-technology/libvirt.git
 
 # debian specific things
-crd=$(mktemp -d)      
+crd=$(mktemp -d)
 git clone --branch debian/11.10.0-2 --single-branch https://salsa.debian.org/libvirt-team/libvirt.git "$crd"
 pushd "$crd"
 git branch
@@ -26,12 +15,11 @@ cp -r debian "$dir/src/"
 popd
 rm -rf "$crd"
 
-sed -i "s/SED_MARKER_FOR_COMMIT_SHA/$SHA_AFTER_CLONE/" upstream_patches/meson.build.patch
+sed "s/SED_MARKER_FOR_COMMIT_SHA/$LIBVIRT_COMMIT_SHA/" <upstream_patches/meson.build.patch.tpl >upstream_patches/meson.build.patch
 
 apply_patches
 import_upstream_patches
 
 version="11.10.0-2" # current debian base (do not change for rebuilds)
-version_increment="3"
 version_suffix="gl${version_increment}~sta1877"
 message="Update to $version $version_suffix"

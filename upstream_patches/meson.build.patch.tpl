@@ -1,6 +1,6 @@
---- a/meson.build       2025-12-10 13:11:38.000000000 +0000
-+++ b/meson.build       2025-12-10 13:16:54.243357645 +0000
-@@ -38,7 +38,7 @@
+--- a/meson.build
++++ b/meson.build
+@@ -42,7 +42,7 @@ elif get_option('commit_hash') != ''
    commit_define = '-DCOMMIT_HASH="@0@"'.format(commit_hash)
    add_project_arguments(commit_define, language: 'c')
  else
@@ -8,4 +8,4 @@
 +  commit_define = '-DCOMMIT_HASH="SED_MARKER_FOR_COMMIT_SHA"'
    add_project_arguments(commit_define, language: 'c')
  endif
-
+ 
