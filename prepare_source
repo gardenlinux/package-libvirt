@@ -1,8 +1,8 @@
 # vim: ft=bash
 #
 # commit sha from https://github.com/cyberus-technology/libvirt/commits/gardenlinux/
-LIBVIRT_COMMIT_SHA="d520de58ba1f450ea62b3024a0317354f6f97422"
-version_increment="5"
+LIBVIRT_COMMIT_SHA="42be617e8a1c9963cd4f4df40148f4d761345087"
+version_increment="6"
 
 git_src_commit "$LIBVIRT_COMMIT_SHA" https://github.com/cyberus-technology/libvirt.git
 
