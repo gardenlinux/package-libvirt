@@ -1,3 +1,10 @@
+diff --git a/debian/libvirt-daemon-driver-secret.dirs b/debian/libvirt-daemon-driver-secret.dirs
+new file mode 100644
+index 000000000..251b35b27
+--- /dev/null
++++ b/debian/libvirt-daemon-driver-secret.dirs
+@@ -0,0 +1 @@
++var/lib/libvirt/secrets
 diff --git a/debian/libvirt-daemon-driver-secret.install.in b/debian/libvirt-daemon-driver-secret.install.in
 index 41e010514..866741a46 100644
 --- a/debian/libvirt-daemon-driver-secret.install.in
@@ -8,6 +15,30 @@ index 41e010514..866741a46 100644
 +usr/lib/systemd/system/virt-secret-init-encryption.service
 +usr/share/augeas/lenses/libvirt_secrets.aug
 +usr/share/augeas/lenses/tests/test_libvirt_secrets.aug
+diff --git a/debian/libvirt-daemon-driver-secret.postinst.in b/debian/libvirt-daemon-driver-secret.postinst.in
+index bdd612ed3..f9f7b1009 100644
+--- a/debian/libvirt-daemon-driver-secret.postinst.in
++++ b/debian/libvirt-daemon-driver-secret.postinst.in
+@@ -14,8 +14,19 @@ set -e
+ # for details, see https://www.debian.org/doc/debian-policy/ or
+ # the debian-policy package
+ 
++add_statoverrides()
++{
++    SECRET_DIR="/var/lib/libvirt/secrets"
++
++    if ! dpkg-statoverride --list "${SECRET_DIR}" >/dev/null 2>&1; then
++        [ ! -e "${SECRET_DIR}" ] || chown root:root "${SECRET_DIR}"
++        [ ! -e "${SECRET_DIR}" ] || chmod 0700 "${SECRET_DIR}"
++    fi
++}
++
+ case "$1" in
+     configure)
++        add_statoverrides
+         # Trigger daemon restart after installing a driver
+         dpkg-trigger libvirt-restart-libvirtd
+     ;;
 diff --git a/debian/libvirt-l10n.install.in b/debian/libvirt-l10n.install.in
 index 83f97c8d0..296e9ec2c 100644
 --- a/debian/libvirt-l10n.install.in
