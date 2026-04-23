@@ -1,10 +1,11 @@
 # vim: ft=bash
 #
 # commit sha from https://github.com/cyberus-technology/libvirt/commits/gardenlinux/
-LIBVIRT_COMMIT_SHA="d92206cc105abd498326fa94a863a22780f04c90"
-version_increment="0"
+LIBVIRT_COMMIT_SHA="e700bd91f205be15d5204e78f06c6f86e81561c5"
+version_increment="1"
 
-git_src_commit "$LIBVIRT_COMMIT_SHA" https://github.com/cyberus-technology/libvirt.git
+# git_src_commit "$LIBVIRT_COMMIT_SHA" https://github.com/cyberus-technology/libvirt.git
+git_src_commit "$LIBVIRT_COMMIT_SHA" https://github.com/tpressure/libvirt.git
 
 # debian specific things
 crd=$(mktemp -d)
