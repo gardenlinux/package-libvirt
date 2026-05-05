@@ -1,4 +1,9 @@
 on:
+  pull_request:
+    branches:
+      - main
+      - rel-1877
+      - sta-1877
   push:
     branches:
       - main
@@ -11,4 +16,5 @@ jobs:
   build:
     uses: gardenlinux/package-build/.github/workflows/build.yml@main
     with:
-      release: ${{ github.ref == 'refs/heads/main' }}
+      publish_release: ${{ github.event_name != 'pull_request' }}
+      release: false
