@@ -4,11 +4,15 @@ on:
       - main
       - rel-1877
       - sta-1877
+      - rel-2150
+      - sta-2150
   push:
     branches:
       - main
       - rel-1877
       - sta-1877
+      - rel-2150
+      - sta-2150
   workflow_dispatch:
   schedule:
     - cron: '0 0 * * *'
