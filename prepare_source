@@ -4,7 +4,6 @@
 LIBVIRT_COMMIT_SHA="a7656536a6e0ea6df4dc361b59812ba0e639f3f6"
 version_increment="1"
 
-# git_src_commit "$LIBVIRT_COMMIT_SHA" https://github.com/cyberus-technology/libvirt.git
 git_src_commit "$LIBVIRT_COMMIT_SHA" https://github.com/cyberus-technology/libvirt.git
 
 # debian specific things
