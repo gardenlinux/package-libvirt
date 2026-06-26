@@ -1,6 +1,41 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
+    "config:best-practices"
+  ],
+  "baseBranchPatterns": [
+    "$default",
+    "/^rel-\\d+$/",
+    "/^sta-\\d+$/"
+  ],
+  "useBaseBranchConfig": "merge",
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Track tip of cyberus-technology/libvirt 'gardenlinux' branch",
+      "managerFilePatterns": [
+        "/^prepare_source$/"
+      ],
+      "matchStrings": [
+        "LIBVIRT_COMMIT_SHA=\"(?<currentDigest>[a-f0-9]{40})\""
+      ],
+      "currentValueTemplate": "gardenlinux",
+      "depNameTemplate": "cyberus-technology/libvirt#gardenlinux",
+      "packageNameTemplate": "https://github.com/cyberus-technology/libvirt",
+      "datasourceTemplate": "git-refs"
+    }
+  ],
+  "packageRules": [
+    {
+      "matchDepNames": [
+        "cyberus-technology/libvirt#gardenlinux",
+        "cyberus-technology/libvirt#gardenlinux-staging"
+      ],
+      "commitMessageTopic": "LIBVIRT",
+      "commitMessageExtra": "to commit {{newDigestShort}}",
+      "prBodyDefinitions": {
+        "Change": "`{{currentDigestShort}}` → `{{newDigestShort}}`"
+      }
+    }
   ]
 }
