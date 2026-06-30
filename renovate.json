@@ -35,8 +35,8 @@
       "depNameTemplate": "cyberus-technology/libvirt",
       "packageNameTemplate": "cyberus-technology/libvirt",
       "datasourceTemplate": "github-tags",
-      "extractVersionTemplate": "^gardenlinux-release-(?<version>.+)$",
-      "versioningTemplate": "regex:^(?<major>\\d{2})-(?<minor>\\d{2})-(?<patch>\\d{2})$"
+      "extractVersionTemplate": "^(?<version>.+)$",
+      "versioningTemplate": "regex:^gardenlinux-release-(?<major>\\d{2})-(?<minor>\\d{2})-(?<patch>\\d{2})$"
     },
     {
       "description": "Match commit SHAs for sta-* branches",
