@@ -1,10 +1,10 @@
 # vim: ft=bash
-
-# commit sha from https://github.com/cyberus-technology/libvirt/commits/gardenlinux/
-LIBVIRT_COMMIT_SHA="2c1f90970ef88165447f65311ee990ed3b0ead01"
+#
+# release tag from https://github.com/gardenlinux/package-libvirt/tags
+LIBVIRT_VERSION_TAG="gardenlinux-release-26-06-19"
 version_increment="2"
 
-git_src_commit "$LIBVIRT_COMMIT_SHA" https://github.com/cyberus-technology/libvirt.git
+git_src_commit "$LIBVIRT_VERSION_TAG" https://github.com/cyberus-technology/libvirt.git
 
 # debian specific things
 crd=$(mktemp -d)
@@ -15,7 +15,7 @@ cp -r debian "$dir/src/"
 popd
 rm -rf "$crd"
 
-sed "s/SED_MARKER_FOR_COMMIT_SHA/$LIBVIRT_COMMIT_SHA/" <upstream_patches/meson.build.patch.tpl >upstream_patches/meson.build.patch
+sed "s/SED_MARKER_FOR_COMMIT_SHA/$LIBVIRT_VERSION_TAG/" <upstream_patches/meson.build.patch.tpl >upstream_patches/meson.build.patch
 
 apply_patches
 import_upstream_patches
