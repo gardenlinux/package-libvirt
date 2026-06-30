@@ -1,6 +1,52 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
+    "config:best-practices",
+    "helpers:githubDigestChangelogs"
+  ],
+  "baseBranchPatterns": [
+    "$default",
+    "/^rel-\\d+$/",
+    "/^sta-\\d+$/"
+  ],
+  "packageRules": [
+    {
+      "description": "Track GitHub release tags for main and rel-* branches",
+      "matchDepNames": ["cyberus-technology/libvirt"],
+      "matchBaseBranches": ["$default", "/^rel-\\d+$/"],
+      "sourceUrl": "https://github.com/cyberus-technology/libvirt",
+      "allowedVersions": "/^gardenlinux-release-/"
+    },
+    {
+      "description": "Track commits from gardenlinux-staging for sta-* branches",
+      "matchDepNames": ["cyberus-technology/libvirt"],
+      "matchBaseBranches": ["/^sta-\\d+$/"],
+      "sourceUrl": "https://github.com/cyberus-technology/libvirt"
+    }
+  ],
+  "customManagers": [
+    {
+      "description": "Match release tags for main and rel-* branches",
+      "customType": "regex",
+      "managerFilePatterns": ["/^prepare_source$/"],
+      "matchStrings": [
+        "LIBVIRT_VERSION_TAG=\"(?<currentValue>gardenlinux-release-[^\"]+)\""
+      ],
+      "depNameTemplate": "cyberus-technology/libvirt",
+      "packageNameTemplate": "cyberus-technology/libvirt",
+      "datasourceTemplate": "github-tags",
+      "extractVersionTemplate": "^(?<version>.+)$"
+    },
+    {
+      "description": "Match commit SHAs for sta-* branches",
+      "customType": "regex",
+      "managerFilePatterns": ["/^prepare_source$/"],
+      "matchStrings": [
+        "# commit sha from https://github\\.com/cyberus-technology/libvirt/commits/(?<currentValue>[^\\n]+?)/\\nLIBVIRT_COMMIT_SHA=\"(?<currentDigest>[0-9a-f]{40})\""
+      ],
+      "depNameTemplate": "cyberus-technology/libvirt",
+      "packageNameTemplate": "https://github.com/cyberus-technology/libvirt.git",
+      "datasourceTemplate": "git-refs"
+    }
   ]
 }
