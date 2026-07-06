@@ -1,7 +1,7 @@
 # vim: ft=bash
 
 # release tag from https://github.com/cyberus-technology/libvirt/releases/tag/gardenlinux-release-26-06-19
-LIBVIRT_VERSION_TAG="gardenlinux-release-26-06-29"
+LIBVIRT_VERSION_TAG="gardenlinux-release-26-07-03"
 version_increment="3"
 
 git_src_commit "$LIBVIRT_VERSION_TAG" https://github.com/cyberus-technology/libvirt.git
