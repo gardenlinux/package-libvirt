@@ -2,7 +2,7 @@
 #
 # release tag from https://github.com/gardenlinux/package-libvirt/tags
 LIBVIRT_VERSION_TAG="gardenlinux-release-26-07-14"
-version_increment="4"
+version_increment="5"
 
 git_src_commit "$LIBVIRT_VERSION_TAG" https://github.com/cyberus-technology/libvirt.git
 
