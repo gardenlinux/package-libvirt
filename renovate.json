@@ -4,6 +4,9 @@
     "config:best-practices",
     "helpers:githubDigestChangelogs"
   ],
+  "reviewers": [
+    "team:sap-cloud-infrastructure-maintainers"
+  ],
   "baseBranchPatterns": [
     "$default",
     "/^rel-\\d+$/",
