@@ -14,7 +14,7 @@ on:
     - cron: '0 0 * * *'
 jobs:
   build:
-    uses: gardenlinux/package-build/.github/workflows/build.yml@3080f5f81567ef05ec40e9dbb010925c38460ad5 # main
+    uses: gardenlinux/package-build/.github/workflows/build.yml@06de95b1f4d3e0f0ad36cbc6ec0768af672d8aba # main
     with:
       publish_release: ${{ github.event_name != 'pull_request' }}
       release: false
