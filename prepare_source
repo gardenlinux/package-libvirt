@@ -2,13 +2,16 @@
 #
 # commit sha from https://github.com/cyberus-technology/libvirt/commits/gardenlinux-staging/
 LIBVIRT_COMMIT_SHA="6a88b797dd307111ae6c746c478ff41f742de67b"
-version_increment="3"
+version_increment="0"
+
+UPSTREAM_VERSION="12.7.0"
+DEBIAN_REVISION="1"
 
 git_src_commit "$LIBVIRT_COMMIT_SHA" https://github.com/cyberus-technology/libvirt.git
 
 # debian specific things
 crd=$(mktemp -d)
-git clone --branch debian/12.2.0-1 --single-branch https://salsa.debian.org/libvirt-team/libvirt.git "$crd"
+git clone --branch "debian/${UPSTREAM_VERSION}-${DEBIAN_REVISION}" --single-branch https://salsa.debian.org/libvirt-team/libvirt.git "$crd"
 pushd "$crd"
 git branch
 cp -r debian "$dir/src/"
@@ -20,6 +23,6 @@ sed "s/SED_MARKER_FOR_COMMIT_SHA/$LIBVIRT_COMMIT_SHA/" <upstream_patches/meson.b
 apply_patches
 import_upstream_patches
 
-version="12.2.0-1" # current debian base (do not change for rebuilds)
-version_suffix="gl${version_increment}~sta1877"
+version="${UPSTREAM_VERSION}" # current debian base (do not change for rebuilds)
+version_suffix="-${DEBIAN_REVISION}gl${version_increment}~sta1877"
 message="Update to $version $version_suffix"
