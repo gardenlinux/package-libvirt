@@ -16,7 +16,7 @@ jobs:
   build:
     permissions:
       contents: write
-    uses: gardenlinux/package-build/.github/workflows/build.yml@900b9c092fa0f38452b377295195e2b10c2ce088 # main
+    uses: gardenlinux/package-build/.github/workflows/build.yml@b718d88508094c9df493b12f06f04eda2516220e # main
     with:
       publish_release: ${{ github.event_name != 'pull_request' }}
       release: false
